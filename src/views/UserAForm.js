@@ -38,12 +38,12 @@ function UserAForm(props) {
   const { handleSubmit, register } = useForm();
   
   
-  let y =0;
+  //let y =0;
   const onSubmit = (data) => {
     props.updateUserAState(data);
     let difference = diff(Time,data.time);
     document.getElementById("showdiff").innerHTML="Time: Difference = "+difference;
-    y = data.y;
+    //y = data.y;
     console.log(diff(Time,data.time))
   }
  
