@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom'
+import '../styles/styles.css'
 
 import UserAForm from './UserAForm'
 import UserBForm from './UserBForm'
@@ -8,8 +9,8 @@ import UserDForm from './UserDForm'
 function Users() {
     return (
         <Router>
-        <div>
-            <Link to="/">UserA</Link> &nbsp;&nbsp;
+        <div className="link-values">
+            <Link to="/" >UserA</Link> &nbsp;&nbsp;
             <Link to="/userb">UserB</Link> &nbsp;&nbsp;
             <Link to="/userc">UserC</Link>&nbsp;&nbsp;
             <Link to="/userd">UserD</Link>

@@ -47,15 +47,7 @@ function UserAForm(props) {
     console.log(diff(Time,data.time))
   }
  
-  if(userBResponses !== "{}"){
-    document.getElementById("differenceB").innerHTML = "Difference with B"+ y-userBResponses.z;
-  }
-  if(userCResponses !== "{}"){
-    document.getElementById("differenceC").innerHTML = "Difference with C"+ y-userCResponses.z;
-  }
-  if(userDResponses !== "{}"){
-    document.getElementById("differenceD").innerHTML = "Difference with D"+ y-userDResponses.z;
-  }
+  
   
   const userBListDetails = Object.keys(userBResponses).map((key) => {
     
