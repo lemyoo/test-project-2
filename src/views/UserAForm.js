@@ -38,16 +38,17 @@ function UserAForm(props) {
   const { handleSubmit, register } = useForm();
   
   
-  //let y =0;
+  let y =0;
   const onSubmit = (data) => {
     props.updateUserAState(data);
     let difference = diff(Time,data.time);
     document.getElementById("showdiff").innerHTML="Time: Difference = "+difference;
-    //y = data.y;
+    y = data.y;
     console.log(diff(Time,data.time))
   }
  
   
+ 
   
   const userBListDetails = Object.keys(userBResponses).map((key) => {
     
@@ -84,7 +85,8 @@ function UserAForm(props) {
     );
   });
 
-  
+ 
+
 
   return (
     
@@ -183,7 +185,7 @@ function UserAForm(props) {
 const mapStateToProps = (state) => {
   return { userBResponses: state.reducers.userBResponses,
   userCResponses: state.reducers.userCResponses,
-userDResponses: state.reducers.userCResponses };
+userDResponses: state.reducers.userDResponses };
   
 };
 const mapDispatchToProps = { updateUserAState };
