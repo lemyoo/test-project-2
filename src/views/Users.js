@@ -9,9 +9,9 @@ function Users() {
     return (
         <Router>
         <div>
-            <Link to="/">UserA</Link>
-            <Link to="/userb">UserB</Link>
-            <Link to="/userc">UserC</Link>
+            <Link to="/">UserA</Link> &nbsp;&nbsp;
+            <Link to="/userb">UserB</Link> &nbsp;&nbsp;
+            <Link to="/userc">UserC</Link>&nbsp;&nbsp;
             <Link to="/userd">UserD</Link>
         </div>
         <Switch>

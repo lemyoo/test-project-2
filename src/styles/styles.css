@@ -62,6 +62,9 @@ h6,
 ul {
   margin: 0;
 }
+span{
+  color: #0A0108;
+}
 .wrapper {
   background: url("../images/bgImage.jpg");
   min-height: 100vh;
@@ -173,4 +176,11 @@ select {
         transform: scaleX(1);
         -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
         transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); }
-    
+
+.specialData{
+  background-color: #fff;
+  border: #000;
+  font-size: 22px;
+  border-radius: 2px;
+  display: inline-block;
+}
