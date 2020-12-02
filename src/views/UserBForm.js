@@ -1,45 +1,83 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { connect } from "react-redux";
+import { useForm } from "react-hook-form";
+
+import InputComponent from "../components/InputComponent";
+import "../styles/styles.css";
+import "../styles/list.css";
+import {updateUserBState} from "../actions/actions"
 
 function UserBForm(props) {
-  const { userADetails } = props;
- console.log(userADetails);
-  const listDetails = Object.keys(userADetails).map((key) => {
+  const { userAResponses } = props;
+  const { handleSubmit, register } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    props.updateUserBState(data);
+  };
+  const userAlistDetails = Object.keys(userAResponses).map((key) => {
     return (
-      <div>
-        <li> {key.toUpperCase()} :{userADetails[key]}</li>
+      <div className="items-body-content">
+        <span>
+          {" "}
+          {key.toUpperCase()} :{userAResponses[key]}
+        </span>
       </div>
     );
   });
-  return (
-    <div className="container">
-      <form>
-        <div className="form-group">
-          <label htmlFor="z">Enter Number(Z)</label>
-          <br />
-          <input type="number" className="form-control" name="z" id="z" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="date">Enter Date</label>
-          <input type="date" className="form-control" name="date" id="date" />
-        </div>
 
-        <div className="form-group">
-          <label htmlFor="time">Enter Time</label>
-          <input className="form-control" type="time" name="time" id="time" />
+  return (
+    <div className="wrapper">
+      <div className="inner">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h3>User B</h3>
+          <InputComponent
+            class="form-wrapper"
+            label="Enter Number(Z)"
+            type="number"
+            name="z"
+            id="z"
+            reff={register}
+          />
+          <InputComponent
+            class="form-wrapper"
+            label="Enter Date"
+            type="date"
+            name="date"
+            id="name"
+            reff={register}
+          />
+          <InputComponent
+            class="form-wrapper"
+            label="Enter time"
+            type="time"
+            name="time"
+            id="time"
+            reff={register}
+          />
+          <div className="form-group">
+            <input className="button" type="submit" value="Submit" />
+          </div>
+        </form>
+
+        <div className="items">
+          <div className="items-head">
+            <p>User A response</p>
+            <hr />
+          </div>
+          <div className="items-body">
+            <div>{userAlistDetails}</div>
+          </div>
         </div>
-        <input type="submit" value="Submit" />
-      </form>
-      <div>
-        <ul>{listDetails}</ul>
       </div>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  return { userADetails: state.reducers.userADetails };
+  return { userAResponses: state.reducers.userAResponses };
 };
 
-export default connect(mapStateToProps)(UserBForm);
+const mapDispatchToProps = {updateUserBState};
+export default connect(mapStateToProps,mapDispatchToProps)(UserBForm);
