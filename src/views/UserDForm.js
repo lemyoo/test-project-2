@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import InputComponent from '../components/InputComponent'
 import "../styles/styles.css";
 import "../styles/list.css";
-import {updateUserDState} from '../actions/actions'
+import {updateUserDState, zValueOfD} from '../actions/actions'
 
 function UserDForm(props) {
     const {userAResponses} = props;
@@ -20,6 +20,7 @@ function UserDForm(props) {
     const {handleSubmit, register} = useForm();
     const onSubmit=(data)=>{
         props.updateUserDState(data);
+        props.zValueOfD(data);
     }
     return (
         <div className="wrapper">
@@ -51,5 +52,5 @@ const mapStateToProps = (state)=>{
     return {userAResponses: state.reducers.userAResponses}
 }
 
-const mapDispatchToProps = {updateUserDState};
+const mapDispatchToProps = {updateUserDState,zValueOfD};
 export default connect(mapStateToProps,mapDispatchToProps)(UserDForm)

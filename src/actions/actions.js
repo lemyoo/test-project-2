@@ -1,4 +1,31 @@
-import {USER_A_RESPONSES,USER_B_RESPONSES,USER_C_RESPONSES,USER_D_RESPONSES} from '../types/types'
+import {USER_A_RESPONSES,USER_B_RESPONSES,USER_C_RESPONSES,USER_D_RESPONSES,
+DIFFERENCE_IN_B,DIFFERENCE_IN_C,DIFFERENCE_IN_D} from '../types/types'
+
+export const zValueOfB=(data)=>{
+    return{
+        type: DIFFERENCE_IN_B,
+        payload:{
+            data: data
+        }
+    }
+}
+export const zValueOfC=(data)=>{
+    return{
+        type: DIFFERENCE_IN_C,
+        payload:{
+            data: data
+        }
+    }
+}
+
+export const zValueOfD=(data)=>{
+    return{
+        type: DIFFERENCE_IN_D,
+        payload:{
+            data: data
+        }
+    }
+}
 
 export const updateUserAState=(data)=>{
     return{

@@ -177,12 +177,17 @@ select {
         -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
         transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); }
 
-.specialData{
+.specialData,
+.special{
   background-color: #fff;
   border: #000;
   font-size: 22px;
   border-radius: 2px;
   display: inline-block;
+  margin-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  
 }
 
 .link-values{
@@ -190,4 +195,6 @@ select {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   color: #000!;
+  margin-left: auto;
 }
+

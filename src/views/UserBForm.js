@@ -6,15 +6,16 @@ import { useForm } from "react-hook-form";
 import InputComponent from "../components/InputComponent";
 import "../styles/styles.css";
 import "../styles/list.css";
-import {updateUserBState} from "../actions/actions"
+import {updateUserBState,zValueOfB} from "../actions/actions"
 
 function UserBForm(props) {
   const { userAResponses } = props;
   const { handleSubmit, register } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+
     props.updateUserBState(data);
+    props.zValueOfB(data);
   };
   const userAlistDetails = Object.keys(userAResponses).map((key) => {
     return (
@@ -79,5 +80,5 @@ const mapStateToProps = (state) => {
   return { userAResponses: state.reducers.userAResponses };
 };
 
-const mapDispatchToProps = {updateUserBState};
+const mapDispatchToProps = {updateUserBState,zValueOfB};
 export default connect(mapStateToProps,mapDispatchToProps)(UserBForm);

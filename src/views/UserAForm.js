@@ -8,6 +8,7 @@ import InputComponent from "../components/InputComponent";
 import "../styles/styles.css";
 
 function UserAForm(props) {
+
   var currentTime = new Date();
   var hr = currentTime.getHours();
   var min = currentTime.getMinutes();
@@ -33,21 +34,32 @@ function UserAForm(props) {
     return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minutes + ":"+(seconds<= 9 ? "0" : "") + seconds;
 }
   
-  const { userBResponses,userCResponses,userDResponses } = props;
+  const { userBResponses,userCResponses,userDResponses,differenceB,differenceC,differenceD } = props;
+  let diffB ="Difference with B ="+ 0;
+  let diffC ="Difference with C ="+ 0;
+  let diffD ="Difference with D ="+ 0;
   
   const { handleSubmit, register } = useForm();
   
   
-  //let y =0;
+  let y =0;
   const onSubmit = (data) => {
     props.updateUserAState(data);
     let difference = diff(Time,data.time);
     document.getElementById("showdiff").innerHTML="Time: Difference = "+difference;
-    //y = data.y;
+    y = data.y;
     console.log(diff(Time,data.time))
   }
  
+  if(Object.keys(userBResponses).length !== 0){
+    diffB = "Difference with B = "+(y-differenceB)
+    }
+  if(Object.keys(userCResponses).length !== 0){
+   diffC = "Difference with C = "+(y-differenceC)
+  }
   
+  if(Object.keys(userDResponses).length !== 0){
+    diffD = "Difference with D = "+(y-differenceD)}
  
   
   const userBListDetails = Object.keys(userBResponses).map((key) => {
@@ -92,10 +104,12 @@ function UserAForm(props) {
     
     <div className="wrapper">
       <div className="inner">
-  <span className="specialData" id="showdiff"></span>
-  <span className="specialData" id="differenceB"></span>
-  <span className="specialData" id="differenceC"></span>
-  <span className="specialData" id="differenceD"></span>
+        <div className="special">
+  <span className="specialData" id="showdiff"></span><br/>
+  <span className="specialData" >{diffB}</span><br/>
+  <span className="specialData" >{diffC}</span><br/>
+  <span className="specialData" >{diffD}</span>
+  </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h3>User A</h3>
           <InputComponent
@@ -185,7 +199,10 @@ function UserAForm(props) {
 const mapStateToProps = (state) => {
   return { userBResponses: state.reducers.userBResponses,
   userCResponses: state.reducers.userCResponses,
-userDResponses: state.reducers.userDResponses };
+userDResponses: state.reducers.userDResponses,
+differenceB: state.reducers.differenceB,
+differenceC: state.reducers.differenceC,
+differenceD: state.reducers.differenceD };
   
 };
 const mapDispatchToProps = { updateUserAState };
